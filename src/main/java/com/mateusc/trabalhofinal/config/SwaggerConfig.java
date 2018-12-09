@@ -20,7 +20,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
     @Bean
     public Docket stockExchangeApi() {
         return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage("com.mateusc.trabalhofinal.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.mateusc.trabalhofinal.controllers"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(metaData());
