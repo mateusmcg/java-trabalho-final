@@ -1,6 +1,5 @@
 package com.mateusc.trabalhofinal.models;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;

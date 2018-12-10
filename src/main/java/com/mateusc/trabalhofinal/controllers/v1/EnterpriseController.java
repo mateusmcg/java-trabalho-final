@@ -1,6 +1,9 @@
 package com.mateusc.trabalhofinal.controllers.v1;
 
-import com.mateusc.trabalhofinal.config.EmailSender;
+import java.util.List;
+
+import com.mateusc.trabalhofinal.models.Enterprise;
+import com.mateusc.trabalhofinal.services.interfaces.EnterpriseService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,17 +22,17 @@ public class EnterpriseController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @GetMapping("/test")
-    @ResponseStatus(HttpStatus.OK)
-    public String getEnterprise() {
-        logger.info("INFO: teste");
-        return "teste";
+    private final EnterpriseService enterpriseService;
+
+    public EnterpriseController(EnterpriseService enterpriseService) {
+        this.enterpriseService = enterpriseService;
     }
 
-    @GetMapping("/email")
+    @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
-    public void sendEmail(String subject, String body) {
-        logger.info("Email enviado com sucesso");
-        EmailSender.sendEmail(subject, body);
+    public List<Enterprise> getAll() {
+        List<Enterprise> enterprises = this.enterpriseService.getAll();
+        logger.info("Enterprise count: " + enterprises.size());
+        return enterprises;
     }
 }
