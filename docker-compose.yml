@@ -1,0 +1,43 @@
+version: '2'
+services:
+    stock-exchange-api:
+        container_name: stock-exchange-api
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: stock-exchange-api:latest
+        expose:
+            - 8080
+        ports:
+            - 8080:8080
+        networks:
+            - stock-exchange
+        links:
+            - stock-exchange-mongodb
+        depends_on:
+            - stock-exchange-mongodb
+            - stock-exchange-rabbitmq
+    stock-exchange-mongodb:
+        container_name: stock-exchange-mongodb
+        image: mongo:latest
+        ports:
+            - 27017:27017
+        networks:
+            - stock-exchange
+    stock-exchange-rabbitmq:
+        container_name: stock-exchange-rabbitmq
+        image: rabbitmq:3-management
+        expose:
+          - 4369
+          - 5671
+          - 5672
+          - 15671
+          - 15672
+          - 25672
+        ports:
+          - 15672:15672
+        networks:
+            - stock-exchange
+networks:
+    stock-exchange:
+        driver: bridge
