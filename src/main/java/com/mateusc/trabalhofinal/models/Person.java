@@ -20,6 +20,7 @@ public class Person {
     @Id
     private UUID id;
     private String name;
+    private String email;
     private LocalDate birthDate;
     private Address address;
 

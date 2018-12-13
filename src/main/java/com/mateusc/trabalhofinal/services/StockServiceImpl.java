@@ -2,12 +2,8 @@ package com.mateusc.trabalhofinal.services;
 
 import java.util.List;
 
-import com.mateusc.trabalhofinal.config.RabbitMQConfig;
-import com.mateusc.trabalhofinal.models.Enterprise;
 import com.mateusc.trabalhofinal.models.Stock;
-import com.mateusc.trabalhofinal.repositories.EnterpriseRepository;
 import com.mateusc.trabalhofinal.repositories.StockRepository;
-import com.mateusc.trabalhofinal.services.interfaces.EnterpriseService;
 import com.mateusc.trabalhofinal.services.interfaces.StockService;
 
 import org.springframework.beans.factory.annotation.Autowired;

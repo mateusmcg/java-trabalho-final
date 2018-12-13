@@ -23,7 +23,7 @@ import io.swagger.annotations.Api;
 
 @RestController
 @RequestMapping("/api/v1/stock")
-@Api(value = "StockExchange", description = "Ações relacionadas às empresas")
+@Api(value = "StockController", description = "Ações relacionadas às empresas")
 public class StockController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
