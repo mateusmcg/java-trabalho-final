@@ -1,3 +1,3 @@
 #!/bin/sh
 
-./mvnw package #build
+mvn package #build
