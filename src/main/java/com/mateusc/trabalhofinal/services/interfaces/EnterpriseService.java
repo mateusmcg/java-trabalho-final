@@ -6,4 +6,5 @@ import com.mateusc.trabalhofinal.models.Enterprise;
 
 public interface EnterpriseService {
     List<Enterprise> getAll();
+    void sendTestMessage(Enterprise message);
 }

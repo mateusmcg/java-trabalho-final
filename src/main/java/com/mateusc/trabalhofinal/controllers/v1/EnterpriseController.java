@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,5 +35,13 @@ public class EnterpriseController {
         List<Enterprise> enterprises = this.enterpriseService.getAll();
         logger.info("Enterprise count: " + enterprises.size());
         return enterprises;
+    }
+
+    @PostMapping("/test-queue")
+    @ResponseStatus(HttpStatus.OK)
+    public String sendMessage(Enterprise message) {
+        //ToDo: Remover endpoint, foi criado apenas para testar a conexão com o rabbitMQ
+        this.enterpriseService.sendTestMessage(message);
+        return "Message sent";
     }
 }
