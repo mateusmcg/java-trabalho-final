@@ -2,7 +2,7 @@
 
 ## Visão Geral da Arquitetura
 
-![Arquitetura](docs/archtecture.png)
+![Arquitetura](docs/stock-exchange-architecture.png)
 
 ## Bibliotecas usadas
 
