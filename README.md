@@ -28,7 +28,7 @@
 
 ### springfox-swagger-ui
 
-- Esta biblioteca é um complemento da anterior ![springfox-swagger2](#springfox-swagger2) utilizando o `.json` gerado para construir uma interface gráfica amigável para testes dos seus endpoints.
+- Esta biblioteca é um complemento da anterior [springfox-swagger2](#springfox-swagger2) utilizando o `.json` gerado para construir uma interface gráfica amigável para testes dos seus endpoints.
 
 ### spring-boot-starter-data-mongodb
 
