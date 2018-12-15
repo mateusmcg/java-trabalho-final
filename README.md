@@ -50,10 +50,10 @@
 
 ### Pré-Requisitos
 
-- Docker
-- Docker-Compose
-- Java
-- Maven
+- [Docker](https://www.docker.com/get-started)
+- [Docker-Compose](https://docs.docker.com/compose/)
+- [Java](https://www.java.com/pt_BR/download/)
+- [Maven](http://maven.apache.org/download.cgi)
 
 ### Steps
 
