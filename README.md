@@ -1,59 +1,61 @@
-# Visão Geral da Arquitetura
+# Stock Exchange API
+
+## Visão Geral da Arquitetura
 
 ![Arquitetura](docs/archtecture.png)
 
-# Bibliotecas usadas
+## Bibliotecas usadas
 
-## spring-boot-starter-amqp
+### spring-boot-starter-amqp
 
-ToDo
+- Biblioteca responsável por encapsular o funcionamento do Spring AMQP e RabbitMQ, facilitando seu uso com poucas configurações.
 
-## spring-boot-starter-web
+### spring-boot-starter-web
 
-ToDo
+- Biblioteca contendo as funcionalidades básicas para executar/construir uma aplicação web, incluindo API's RESTful utilizando Spring MVC. Por padrão utiliza Tomcat como servidor web.
 
-## lombok
+### lombok
 
-ToDo
+- Biblioteca responsável por facilitar a vida do desenvolvedor, encapsulando diversas lógicas como Getters/Setters, instâncias de objetos utilizando o padrão `builder()`, além de outras funções.
 
-## spring-boot-starter-test
+### spring-boot-starter-test
 
-ToDo
+- Pacote contendo as funcionalidades básicas para testes unitários (JUnit, Hamcrest e Mockito).
 
-## springfox-swagger2
+### springfox-swagger2
 
-ToDo
+- Biblioteca responsável por habilitar o Swagger na sua aplicação. É através desta lib que o `.json` contendo as informações da sua API (endpoints, modelos, etc) é gerado. Porém ainda não possibilita uma interface amigável ao usuário.
 
-## springfox-swagger-ui
+### springfox-swagger-ui
 
-ToDo
+- Esta biblioteca é um complemento da anterior ![springfox-swagger2](#springfox-swagger2) utilizando o `.json` gerado para construir uma interface gráfica amigável para testes dos seus endpoints.
 
-## spring-boot-starter-data-mongodb
+### spring-boot-starter-data-mongodb
 
-ToDo
+- Biblioteca que encapsula o funcionamento/utilização de um banco de dados MongoDB.
 
-## javax.mail
+### javax.mail
 
-ToDo
+- Biblioteca que encapsula o envio de emails.
 
-## spring-boot-starter-logging
+### spring-boot-starter-logging
 
-ToDo
+- Biblioteca utilizada para facilitar a implementação de log da aplicação utilizando Logback.
 
-## de.flapdoodle.embed.mongo
+### de.flapdoodle.embed.mongo
 
-ToDo
+- Biblioteca utilizada por subir um banco MongoDB local para o correto funcionamento dos testes unitários.
 
-# Como rodar a aplicação
+## Como rodar a aplicação
 
-## Pré-Requisitos
+### Pré-Requisitos
 
 - Docker
 - Docker-Compose
 - Java
 - Maven
 
-## Steps
+### Steps
 
 - Dentro da pasta `devops` existem 3 scrips:
   - build.sh
