@@ -1,6 +1,8 @@
 package com.mateusc.trabalhofinal.services;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import com.mateusc.trabalhofinal.models.Person;
 import com.mateusc.trabalhofinal.repositories.PersonRepository;
@@ -18,5 +20,31 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public List<Person> getAll() {
         return this.personRepository.findAll();
+    }
+
+    @Override
+    public Person findById(UUID id) {
+        Optional<Person> person = this.personRepository.findById(id);
+
+        if (person.isEmpty())
+            return null;
+
+        return person.get();
+    }
+
+    @Override
+    public void create(Person person) {
+        this.personRepository.insert(person);
+    }
+
+    @Override
+    public void update(UUID id, Person person) {
+        person.setId(id);
+        this.personRepository.save(person);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        this.personRepository.deleteById(id);
     }
 }

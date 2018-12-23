@@ -44,24 +44,27 @@ public class StockController {
     @GetMapping("/{id}")
     public ResponseEntity<Stock> findById(@PathVariable UUID id) {
         logger.info("Stock Id to GET: " + id.toString());
-
-        return new ResponseEntity<Stock>(HttpStatus.OK);
+        Stock stock = this.stockService.findById(id);
+        return new ResponseEntity<Stock>(stock, HttpStatus.OK);
     }
 
     @PostMapping("")
-    public HttpStatus create(@RequestBody Stock newStock) {
+    public HttpStatus create(@RequestBody Stock stock) {
+        this.stockService.create(stock);
         return HttpStatus.OK;
     }
 
     @PutMapping("/{id}")
     public HttpStatus update(@PathVariable UUID id, @RequestBody Stock updatedStock) {
         logger.info("Stock Id to UPDATE: " + id.toString());
+        this.stockService.update(id, updatedStock);
         return HttpStatus.OK;
     }
 
     @DeleteMapping("/{id}")
     public HttpStatus delete(@PathVariable UUID id) {
         logger.info("Stock Id to DELETE: " + id.toString());
+        this.stockService.delete(id);
         return HttpStatus.OK;
     }
 }

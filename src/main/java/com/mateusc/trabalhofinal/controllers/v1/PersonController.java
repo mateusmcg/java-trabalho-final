@@ -37,20 +37,21 @@ public class PersonController {
 
     @GetMapping("")
     public ResponseEntity<List<Person>> getAll() {
-        List<Person> person = this.personService.getAll();
-        logger.info("People count: " + person.size());
-        return new ResponseEntity<List<Person>>(person, HttpStatus.OK);
+        List<Person> people = this.personService.getAll();
+        logger.info("People count: " + people.size());
+        return new ResponseEntity<List<Person>>(people, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Person> findById(@PathVariable UUID id) {
         logger.info("Person Id to GET: " + id.toString());
-
-        return new ResponseEntity<Person>(HttpStatus.OK);
+        Person person = this.personService.findById(id);
+        return new ResponseEntity<Person>(person, HttpStatus.OK);
     }
 
     @PostMapping("")
-    public HttpStatus create(@RequestBody Person newPerson) {
+    public HttpStatus create(@RequestBody Person person) {
+        this.personService.create(person);
         return HttpStatus.OK;
     }
 
@@ -69,14 +70,16 @@ public class PersonController {
     }
 
     @PutMapping("/{id}")
-    public HttpStatus update(@PathVariable UUID id, @RequestBody Stock updatedPerson) {
+    public HttpStatus update(@PathVariable UUID id, @RequestBody Person updatedPerson) {
         logger.info("Person Id to UPDATE: " + id.toString());
+        this.personService.update(id, updatedPerson);
         return HttpStatus.OK;
     }
 
     @DeleteMapping("/{id}")
     public HttpStatus delete(@PathVariable UUID id) {
         logger.info("Person Id to DELETE: " + id.toString());
+        this.personService.delete(id);
         return HttpStatus.OK;
     }
 }

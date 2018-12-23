@@ -44,16 +44,18 @@ public class EnterpriseController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Enterprise> findById(@PathVariable UUID id) {
-        return new ResponseEntity<Enterprise>(HttpStatus.OK);
+        Enterprise enterprise = this.enterpriseService.findById(id);
+        return new ResponseEntity<Enterprise>(enterprise, HttpStatus.OK);
     }
 
     @PostMapping("")
-    public HttpStatus create(@RequestBody Enterprise newEnterprise) {
+    public HttpStatus create(@RequestBody Enterprise enterprise) {
+        this.enterpriseService.create(enterprise);
         return HttpStatus.OK;
     }
 
     @PostMapping("/{enterpriseId}/stock")
-    public HttpStatus create(@PathVariable UUID enterpriseId, @RequestBody Stock stock) {
+    public HttpStatus createStock(@PathVariable UUID enterpriseId, @RequestBody Stock stock) {
         logger.info("EnterpriseId: " + enterpriseId.toString());
         logger.info("Stock", stock);
         return HttpStatus.OK;
@@ -61,11 +63,13 @@ public class EnterpriseController {
 
     @PutMapping("/{id}")
     public HttpStatus update(@PathVariable UUID id, @RequestBody Enterprise newEnterprise) {
+        this.enterpriseService.update(id, newEnterprise);
         return HttpStatus.OK;
     }
 
     @DeleteMapping("/{id}")
     public HttpStatus delete(@PathVariable UUID id) {
+        this.enterpriseService.delete(id);
         return HttpStatus.OK;
     }
 }

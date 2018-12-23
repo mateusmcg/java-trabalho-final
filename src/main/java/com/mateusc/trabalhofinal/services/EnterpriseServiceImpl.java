@@ -1,6 +1,8 @@
 package com.mateusc.trabalhofinal.services;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import com.mateusc.trabalhofinal.config.RabbitMQConfig;
 import com.mateusc.trabalhofinal.models.Enterprise;
@@ -26,7 +28,28 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     }
 
     @Override
-    public void sendTestMessage(Enterprise message) {
-        this.rabbitTemplate.convertAndSend(RabbitMQConfig.SELL_QUEUE, message);
+    public Enterprise findById(UUID id) {
+        Optional<Enterprise> enterprise = this.enterpriseRepository.findById(id);
+
+        if (enterprise.isEmpty())
+            return null;
+
+        return enterprise.get();
+    }
+
+    @Override
+    public void create(Enterprise enterprise) {
+        this.enterpriseRepository.insert(enterprise);
+    }
+
+    @Override
+    public void update(UUID id, Enterprise enterprise) {
+        enterprise.setId(id);
+        this.enterpriseRepository.save(enterprise);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        this.enterpriseRepository.deleteById(id);
     }
 }
