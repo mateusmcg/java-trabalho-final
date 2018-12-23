@@ -11,4 +11,6 @@ public interface PersonService {
     void create(Person person);
     void update(UUID id, Person person);
     void delete(UUID id);
+    void buy(UUID personId, UUID stockId);
+    void sell(UUID personId, UUID stockId);
 }

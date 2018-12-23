@@ -6,6 +6,7 @@ import java.util.UUID;
 import com.mateusc.trabalhofinal.models.Enterprise;
 import com.mateusc.trabalhofinal.models.Stock;
 import com.mateusc.trabalhofinal.services.interfaces.EnterpriseService;
+import com.mateusc.trabalhofinal.services.interfaces.StockService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,9 +31,11 @@ public class EnterpriseController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final EnterpriseService enterpriseService;
+    private final StockService stockService;
 
-    public EnterpriseController(EnterpriseService enterpriseService) {
+    public EnterpriseController(EnterpriseService enterpriseService, StockService stockService) {
         this.enterpriseService = enterpriseService;
+        this.stockService = stockService;
     }
 
     @GetMapping("")
@@ -55,10 +58,16 @@ public class EnterpriseController {
     }
 
     @PostMapping("/{enterpriseId}/stock")
-    public HttpStatus createStock(@PathVariable UUID enterpriseId, @RequestBody Stock stock) {
-        logger.info("EnterpriseId: " + enterpriseId.toString());
-        logger.info("Stock", stock);
-        return HttpStatus.OK;
+    public ResponseEntity<String> createStock(@PathVariable UUID enterpriseId, @RequestBody Stock stock) {
+        try {
+            logger.info("EnterpriseId: " + enterpriseId.toString());
+            logger.info("Stock", stock);
+            stock.setEnterprise(Enterprise.builder().id(enterpriseId).build());
+            this.stockService.create(stock);
+            return new ResponseEntity<String>("", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("/{id}")

@@ -67,5 +67,6 @@
       - Dockerfile da API Springboot em questão
   - stop-app.sh
     - Responsável por executar o comando `docker-compose down` que interrompe a execução da aplicação, removendo todos os containers mencionados acima.
+- Antes de iniciar a aplicação através do comando `./devops/start-app.sh`, altere o arquivo `EmailSender.java` com suas informações de e-mail para que seja possível simular o mecanismo adequadamente.
 - Uma vez que a aplicação está sendo executada, basta acessar o endereço `http://localhost:8080/swagger-ui.html#` para visualizar todos os endpoints disponívels pela API e testar suas funções.
 - Caso queira, também é possível acessar o gerenciador do RabbitMQ no endereço `http://localhost:15672` com o usuário e senha sendo, respectivamente, `guest:guest`.

@@ -41,6 +41,13 @@ public class StockController {
         return new ResponseEntity<List<Stock>>(stocks, HttpStatus.OK);
     }
 
+    @GetMapping("/for-sale")
+    public ResponseEntity<List<Stock>> getAllForSale() {
+        List<Stock> stocks = this.stockService.getStockForSale();
+        logger.info("Stocks for sale count: " + stocks.size());
+        return new ResponseEntity<List<Stock>>(stocks, HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Stock> findById(@PathVariable UUID id) {
         logger.info("Stock Id to GET: " + id.toString());
@@ -50,8 +57,12 @@ public class StockController {
 
     @PostMapping("")
     public HttpStatus create(@RequestBody Stock stock) {
-        this.stockService.create(stock);
-        return HttpStatus.OK;
+        try {
+            this.stockService.create(stock);
+            return HttpStatus.OK;   
+        } catch (Exception e) {
+            return HttpStatus.BAD_REQUEST;
+        }
     }
 
     @PutMapping("/{id}")

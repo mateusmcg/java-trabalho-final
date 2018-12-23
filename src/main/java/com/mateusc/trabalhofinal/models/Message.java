@@ -1,5 +1,7 @@
 package com.mateusc.trabalhofinal.models;
 
+import java.util.UUID;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,9 +13,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Address {
-    private String street;
-    private Integer number;
-    private String complement;
-    private String neighborhood;
+public class Message {
+    public UUID personId;
+    public UUID stockId;
 }

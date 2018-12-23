@@ -22,8 +22,8 @@ import org.springframework.messaging.handler.annotation.support.MessageHandlerMe
 public class RabbitMQConfig implements RabbitListenerConfigurer {
     public static final String SELL_QUEUE = "stock-exchange-sell-queue";
     public static final String BUY_QUEUE = "stock-exchange-buy-queue";
-    public static final String EXCHANGE_MESSAGES = "messages-exchange";
-    public static final String QUEUE_DEAD_MESSAGES = "dead-messages-queue";
+    private static final String EXCHANGE_MESSAGES = "messages-exchange";
+    private static final String QUEUE_DEAD_MESSAGES = "dead-messages-queue";
  
     @Bean
     Queue sellQueue() {

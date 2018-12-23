@@ -55,17 +55,19 @@ public class PersonController {
         return HttpStatus.OK;
     }
 
-    @PostMapping("/{id}/stock/{stockId}/buy")
-    public HttpStatus buy(@PathVariable UUID id, @PathVariable UUID stockId) {
-        logger.info("Person Id: " + id.toString());
+    @PostMapping("/{personId}/stock/{stockId}/buy")
+    public HttpStatus buy(@PathVariable UUID personId, @PathVariable UUID stockId) {
+        logger.info("Person Id: " + personId.toString());
         logger.info("Stock Id: " + stockId.toString());
+        this.personService.buy(personId, stockId);
         return HttpStatus.OK;
     }
 
-    @PostMapping("/{id}/stock/{stockId}/sell")
-    public HttpStatus sell(@PathVariable UUID id, @PathVariable UUID stockId) {
-        logger.info("Person Id: " + id.toString());
+    @PostMapping("/{personId}/stock/{stockId}/sell")
+    public HttpStatus sell(@PathVariable UUID personId, @PathVariable UUID stockId) {
+        logger.info("Person Id: " + personId.toString());
         logger.info("Stock Id: " + stockId.toString());
+        this.personService.sell(personId, stockId);
         return HttpStatus.OK;
     }
 
